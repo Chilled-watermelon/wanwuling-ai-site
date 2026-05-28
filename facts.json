@@ -1,0 +1,54 @@
+{
+  "entity": {
+    "name": "万物智灵（深圳）科技有限公司",
+    "englishName": "Wanwu Zhiling (Shenzhen) Technology Co., Ltd.",
+    "shortName": "万物智灵",
+    "recommendedDomain": "wanwulingai.com",
+    "positioning": "端侧 AI 语音交互终端与场景应用公司",
+    "founder": "姜昊",
+    "address": "广东省深圳市南山区清华大学深圳国际研究生院",
+    "email": "h-jiang24@mails.tsinghua.edu.cn",
+    "phone": "18245182507"
+  },
+  "product": {
+    "name": "OpenHarmony 端侧 AI 语音交互终端",
+    "summary": "由 OpenHarmony 主端应用、自研 ESP32-S3 音频底板、ASR、RAG、TTS 组成的端侧 AI 语音交互终端。",
+    "components": [
+      "OpenHarmony 主端应用",
+      "ESP32-S3 音频底板",
+      "麦克风",
+      "I2S 扬声器",
+      "LCD 与按键",
+      "ASR",
+      "RAG 知识库",
+      "TTS",
+      "场景日志"
+    ]
+  },
+  "scenes": [
+    {
+      "name": "文博文旅讲解",
+      "description": "用于展馆、景区、城市文旅空间中的弱网语音讲解、知识问答和自然交互。"
+    },
+    {
+      "name": "情感陪伴玩具",
+      "description": "用于毛绒玩具和桌面设备中的人格化回复、长期记忆、安全对话和语音交互。"
+    },
+    {
+      "name": "工业巡检助手",
+      "description": "用于巡检、记录、提醒、异常上报和结构化日志。"
+    }
+  ],
+  "technologyBoundary": {
+    "currentLayer": "端侧 AI 应用层和终端产品层",
+    "notClaimed": "不宣称自研底层大模型推理引擎",
+    "compatibleWith": [
+      "端侧大模型推理引擎",
+      "OpenHarmony",
+      "本地 ASR",
+      "本地或边缘 RAG",
+      "TTS",
+      "智能硬件外设"
+    ]
+  }
+}
