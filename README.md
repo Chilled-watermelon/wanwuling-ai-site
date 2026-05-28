@@ -3,8 +3,8 @@
 万物智灵（深圳）科技有限公司官网静态站点。
 
 - 定位：端侧 AI 语音交互终端与场景应用公司。
-- 部署：GitHub Pages。
-- 计划绑定域名：`wanwulingai.com`（以实际注册成功并解析的域名为准）。
+- 部署：GitHub Pages（`https://chilled-watermelon.github.io/wanwuling-ai-site/`）。
+- 绑定域名：`wwling.cn`（已注册，DNS 解析配置完成后正式上线）。
 
 ## 文件
 

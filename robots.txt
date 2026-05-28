@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wanwulingai.com/sitemap.xml
+Sitemap: https://wwling.cn/sitemap.xml
