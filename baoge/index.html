@@ -5,81 +5,107 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>报哥志愿 · AI 高考志愿填报系统 — 万物智灵</title>
 <meta name="description" content="清华团队打造的 AI 高考志愿填报系统：智能测评 + 冲稳保方案 + 专业去向透明 + AI 问答。真实数据驱动，防幻觉 RAG 架构。">
+<meta property="og:title" content="报哥志愿 · AI 高考志愿填报系统">
+<meta property="og:description" content="先懂你的人，再懂你的分。清华团队打造：智能测评 + 冲稳保 + 专业去向透明 + AI 问答。">
+<meta property="og:image" content="http://wwling.cn/baoge/img/share.png">
+<meta property="og:type" content="website">
+<meta itemprop="name" content="报哥志愿 · AI 高考志愿填报系统">
+<meta itemprop="image" content="http://wwling.cn/baoge/img/share.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23c9a35f'/%3E%3Cstop offset='1' stop-color='%238a4bbb'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-size='32' text-anchor='middle' fill='%23fff' font-family='PingFang SC' font-weight='bold'%3E灵%3C/text%3E%3C/svg%3E">
 <style>
-  :root{--ink:#0e1830;--navy:#13203a;--purple:#6b2d8f;--gold:#c9a35f;--gold-l:#e6cfa3;--txt:#e9ecf6;--mut:#9aa6c0;}
+  :root{--ink:#0e1830;--purple:#6b2d8f;--gold:#c9a35f;--gold-l:#e6cfa3;--txt:#e9ecf6;--mut:#9aa6c0;--line:#ffffff1e;}
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:
-    radial-gradient(120% 70% at 80% -10%,#3b2354 0%,#1b1430 40%,#0e1830 100%) fixed;color:var(--txt);}
-  .wrap{max-width:980px;margin:0 auto;padding:0 20px;}
-  header{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
-  .logo{display:flex;align-items:center;gap:10px;}
-  .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--gold),#8a4bbb);
-    display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:17px;}
-  .lt{font-weight:800;letter-spacing:.12em;font-size:15px;}
-  .lt small{display:block;color:var(--mut);font-weight:400;font-size:10px;letter-spacing:.2em;}
-  .pill{font-size:12px;color:var(--gold-l);border:1px solid #c9a35f66;padding:4px 12px;border-radius:99px;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:var(--txt);
+    background:#101a30;background-image:radial-gradient(110% 60% at 85% -5%,#3b2354 0%,#1b1430 45%,#101a30 78%),
+    radial-gradient(60% 40% at 0% 100%,#1c2a4d55 0%,transparent 70%);background-attachment:fixed;}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 20px;}
 
-  .hero{text-align:center;padding:34px 0 10px;}
-  .hero .tag{display:inline-block;font-size:12px;letter-spacing:.3em;color:var(--gold-l);border:1px solid #c9a35f55;
-    padding:5px 14px;border-radius:99px;margin-bottom:16px;}
-  h1{font-size:clamp(26px,6vw,40px);font-weight:900;line-height:1.3;}
-  h1 .em{background:linear-gradient(90deg,var(--gold),#b87ae0);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .sub{color:var(--mut);margin-top:12px;font-size:14.5px;line-height:1.8;}
-  .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
-  .badge{font-size:12px;background:#ffffff10;border:1px solid #ffffff22;padding:5px 12px;border-radius:8px;}
-  .badge b{color:var(--gold-l);}
+  header{display:flex;align-items:center;justify-content:space-between;padding:18px 0 14px;gap:10px;}
+  .logo{display:flex;align-items:center;gap:11px;min-width:0;}
+  .mark{width:38px;height:38px;border-radius:10px;flex:none;background:linear-gradient(135deg,var(--gold),#8a4bbb);
+    box-shadow:0 4px 18px #8a4bbb55, inset 0 1px 0 #ffffff55;display:flex;align-items:center;justify-content:center;}
+  .mark span{font-weight:900;color:#fff;font-size:19px;text-shadow:0 1px 2px #00000033;}
+  .lt{font-weight:800;letter-spacing:.14em;font-size:15.5px;line-height:1.2;white-space:nowrap;}
+  .lt small{display:block;color:var(--mut);font-weight:500;font-size:9px;letter-spacing:.32em;margin-top:2px;}
+  .pill{flex:none;font-size:11px;color:var(--gold-l);border:1px solid #c9a35f66;background:#c9a35f14;
+    padding:5px 11px;border-radius:99px;letter-spacing:.12em;white-space:nowrap;}
 
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:30px 0 8px;}
-  .stat{background:#ffffff0c;border:1px solid #ffffff1c;border-radius:12px;padding:14px 8px;text-align:center;}
-  .stat .n{font-size:clamp(17px,3.4vw,24px);font-weight:900;color:var(--gold-l);}
-  .stat .t{font-size:11px;color:var(--mut);margin-top:4px;}
+  .hero{text-align:center;padding:42px 0 8px;}
+  .hero .tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;letter-spacing:.26em;color:var(--gold-l);
+    border:1px solid #c9a35f50;background:#c9a35f0f;padding:6px 16px;border-radius:99px;margin-bottom:18px;}
+  .hero .tag::before,.hero .tag::after{content:"";width:14px;height:1px;background:#c9a35f88;}
+  h1{font-size:clamp(27px,6vw,42px);font-weight:900;line-height:1.32;letter-spacing:.02em;}
+  h1 .em{background:linear-gradient(92deg,#e6cfa3,#c9a35f 45%,#b87ae0);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub{color:var(--mut);margin:14px auto 0;font-size:14.5px;line-height:1.9;max-width:560px;}
+  .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px;}
+  .badge{font-size:12px;background:#ffffff0e;border:1px solid var(--line);padding:6px 13px;border-radius:9px;color:#cdd5ea;}
+  .badge b{color:var(--gold-l);font-weight:700;}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:32px 0 6px;}
+  .stat{background:linear-gradient(170deg,#ffffff10,#ffffff06);border:1px solid var(--line);border-radius:13px;padding:15px 8px;text-align:center;}
+  .stat .n{font-size:clamp(17px,3.4vw,25px);font-weight:900;color:var(--gold-l);font-variant-numeric:tabular-nums;}
+  .stat .t{font-size:11px;color:var(--mut);margin-top:5px;}
   @media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr);}}
 
-  .sec{margin:34px 0 14px;font-size:13px;letter-spacing:.3em;color:var(--gold-l);font-weight:700;}
-  .screens{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
-  @media(max-width:860px){.screens{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;}
-    .scr{min-width:62vw;scroll-snap-align:center;}}
-  .scr{background:#ffffff0a;border:1px solid #ffffff1e;border-radius:14px;padding:10px;}
-  .scr img{width:100%;border-radius:9px;display:block;}
-  .scr h5{font-size:13.5px;font-weight:800;margin:9px 2px 3px;}
-  .scr h5 i{font-style:normal;color:var(--gold);margin-right:5px;}
-  .scr p{font-size:11.5px;color:var(--mut);line-height:1.6;padding:0 2px 2px;}
+  .sec{display:flex;align-items:center;gap:12px;margin:40px 0 16px;}
+  .sec h3{font-size:13px;letter-spacing:.32em;color:var(--gold-l);font-weight:800;white-space:nowrap;}
+  .sec::before{content:"";width:18px;height:2px;background:linear-gradient(90deg,var(--gold),#8a4bbb);border-radius:2px;}
+  .sec::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#ffffff22,transparent);}
 
-  .flow{background:#ffffff0a;border:1px solid #ffffff1e;border-radius:14px;padding:16px;
-    display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font-size:13px;}
+  .screens{display:grid;grid-template-columns:repeat(5,1fr);gap:13px;}
+  @media(max-width:880px){.screens{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;
+    -webkit-overflow-scrolling:touch;}
+    .scr{min-width:58vw;scroll-snap-align:center;}}
+  .scr{position:relative;}
+  .scr .ph{border-radius:18px;overflow:hidden;border:1px solid #ffffff26;box-shadow:0 10px 30px #00000055;background:#16223e;}
+  .scr .ph img{width:100%;display:block;}
+  .scr .no{position:absolute;top:-9px;left:-7px;z-index:2;width:26px;height:26px;border-radius:8px;
+    background:linear-gradient(135deg,var(--gold),#8a4bbb);color:#fff;font-size:12.5px;font-weight:900;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px #00000066;}
+  .scr h5{font-size:13.5px;font-weight:800;margin:11px 2px 4px;}
+  .scr p{font-size:11.5px;color:var(--mut);line-height:1.65;padding:0 2px;}
+
+  .flow{background:linear-gradient(170deg,#ffffff0d,#ffffff05);border:1px solid var(--line);border-radius:14px;padding:18px 16px;
+    display:flex;flex-wrap:wrap;gap:7px;align-items:center;justify-content:center;font-size:13.5px;}
   .flow b{color:var(--gold-l);font-weight:700;}
-  .flow .ar{color:#67729a;}
+  .flow .ar{color:#5d6a92;}
 
-  .coop{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .coop{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;}
   @media(max-width:680px){.coop{grid-template-columns:1fr;}}
-  .cp{background:linear-gradient(160deg,#ffffff10,#ffffff05);border:1px solid #ffffff1e;border-radius:14px;padding:16px;}
-  .cp h5{font-size:14.5px;font-weight:800;color:var(--gold-l);margin-bottom:6px;}
-  .cp p{font-size:12.5px;color:var(--mut);line-height:1.75;}
+  .cp{background:linear-gradient(165deg,#ffffff10,#ffffff05);border:1px solid var(--line);border-radius:14px;padding:18px;}
+  .cp h5{font-size:14.5px;font-weight:800;color:var(--gold-l);margin-bottom:7px;display:flex;align-items:center;gap:8px;}
+  .cp h5::before{content:"";width:7px;height:7px;border-radius:2px;background:linear-gradient(135deg,var(--gold),#8a4bbb);}
+  .cp p{font-size:12.5px;color:var(--mut);line-height:1.8;}
 
-  .note{font-size:11.5px;color:#7d89aa;line-height:1.7;margin-top:18px;text-align:center;}
-  footer{margin-top:30px;border-top:1px solid #ffffff1a;padding:22px 0 34px;text-align:center;}
-  footer .c{font-size:14px;line-height:2;color:var(--txt);}
+  .note{font-size:11.5px;color:#76829f;line-height:1.7;margin-top:20px;text-align:center;}
+  footer{margin-top:34px;border-top:1px solid #ffffff14;padding:26px 0 40px;text-align:center;}
+  footer .c{font-size:14px;line-height:2.1;}
   footer .c b{color:var(--gold-l);}
-  footer .tiny{font-size:11px;color:#67729a;margin-top:8px;}
+  footer .brand{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:10px;opacity:.92;}
+  footer .brand .mark{width:30px;height:30px;border-radius:8px;}
+  footer .brand .mark span{font-size:15px;}
+  footer .brand .bn{font-size:13px;font-weight:800;letter-spacing:.2em;}
+  footer .tiny{font-size:11px;color:#5d6a92;margin-top:10px;letter-spacing:.05em;}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="logo">
-      <div class="mark">灵</div>
+      <div class="mark"><span>灵</span></div>
       <div class="lt">万物智灵<small>WANWU ZHILING · AI</small></div>
     </div>
-    <div class="pill">产品演示 DEMO</div>
+    <div class="pill">产品演示</div>
   </header>
 
   <div class="hero">
     <div class="tag">报哥志愿 · AI 高考报考系统</div>
     <h1>先懂你的人，<span class="em">再懂你的分</span></h1>
-    <div class="sub">清华团队打造的 AI 志愿填报产品：性格测评 → 冲稳保方案 → 专业去向透明 → AI 问答<br>每一个关键数字都标注来源，不贩卖焦虑、不编造数据。</div>
+    <div class="sub">清华团队打造的 AI 志愿填报产品：性格测评 → 冲稳保方案 → 专业去向透明 → AI 问答。每一个关键数字都标注来源，不贩卖焦虑、不编造数据。</div>
     <div class="badges">
       <div class="badge"><b>清华团队</b> 研发与顾问交付</div>
-      <div class="badge"><b>真实数据</b> 驱动，强制来源标注</div>
+      <div class="badge"><b>真实数据</b> 驱动 · 强制来源标注</div>
       <div class="badge"><b>防幻觉 RAG</b> 架构 AI 问答</div>
     </div>
   </div>
@@ -91,30 +117,31 @@
     <div class="stat"><div class="n">60+</div><div class="t">2025 季 1对1 实战交付</div></div>
   </div>
 
-  <div class="sec">五屏看懂产品</div>
+  <div class="sec"><h3>五屏看懂产品</h3></div>
   <div class="screens">
-    <div class="scr"><img src="img/home.png" alt="首页"><h5><i>01</i>首页</h5><p>测评 + 查分双入口，「专业去向透明」建立家长信任</p></div>
-    <div class="scr"><img src="img/assess.png" alt="智能测评"><h5><i>02</i>智能测评</h5><p>MBTI + 霍兰德双模型，7 分钟生成人格 × 职业画像</p></div>
-    <div class="scr"><img src="img/major.png" alt="专业详情"><h5><i>03</i>专业透明</h5><p>应届薪资区间、典型岗位、深造去向，全部标注来源年份</p></div>
-    <div class="scr"><img src="img/match.png" alt="冲稳保"><h5><i>04</i>冲稳保方案</h5><p>一分一段实时算位次，冲 / 稳 / 保梯度一目了然</p></div>
-    <div class="scr"><img src="img/chat.png" alt="AI问报哥"><h5><i>05</i>问报哥 AI</h5><p>大模型 + RAG 事实注入：有数据才回答，没数据明说「需查证」</p></div>
+    <div class="scr"><div class="no">1</div><div class="ph"><img src="img/home.png" alt="首页"></div><h5>首页</h5><p>测评 + 查分双入口，「专业去向透明」建立家长信任</p></div>
+    <div class="scr"><div class="no">2</div><div class="ph"><img src="img/assess.png" alt="智能测评"></div><h5>智能测评</h5><p>MBTI + 霍兰德双模型，7 分钟生成人格 × 职业画像</p></div>
+    <div class="scr"><div class="no">3</div><div class="ph"><img src="img/major.png" alt="专业详情"></div><h5>专业透明</h5><p>应届薪资区间、典型岗位、深造去向，全部标注来源年份</p></div>
+    <div class="scr"><div class="no">4</div><div class="ph"><img src="img/match.png" alt="冲稳保"></div><h5>冲稳保方案</h5><p>一分一段实时算位次，冲 / 稳 / 保梯度一目了然</p></div>
+    <div class="scr"><div class="no">5</div><div class="ph"><img src="img/chat.png" alt="AI问报哥"></div><h5>问报哥 AI</h5><p>大模型 + RAG 事实注入：有数据才回答，没数据明说「需查证」</p></div>
   </div>
 
-  <div class="sec">用户旅程</div>
+  <div class="sec"><h3>用户旅程</h3></div>
   <div class="flow">
     <b>智能测评</b><span class="ar">→</span><b>人格画像</b><span class="ar">→</span><b>查分定位</b><span class="ar">→</span><b>冲稳保方案</b><span class="ar">→</span><b>AI 答疑</b><span class="ar">→</span><b>1对1 深度填报服务</b>
   </div>
 
-  <div class="sec">学校 / 机构合作</div>
+  <div class="sec"><h3>学校 / 机构合作</h3></div>
   <div class="coop">
     <div class="cp"><h5>联合品牌</h5><p>可贴牌部署为学校 / 机构专属版本，沉淀自有家长私域与口碑资产。</p></div>
     <div class="cp"><h5>渠道 × 交付</h5><p>合作方提供学生与家长渠道，我们提供产品 + 清华背景顾问团队交付，按人头分成。</p></div>
-    <div class="cp"><h5>季节性现金流</h5><p>单客客单价 3000 元+，单季交付周期 2 周；去向数据沉淀反哺下一届招生。</p></div>
+    <div class="cp"><h5>季节性现金流</h5><p>客单价 3000 元+，单季交付周期 2 周；去向数据沉淀反哺下一届招生。</p></div>
   </div>
 
   <div class="note">演示版说明：界面为开发完成的小程序实景截图，正式版上线流程推进中；当前数据底座覆盖贵州 / 黑龙江，其他省份约 2 周完成适配。本产品不作任何录取承诺。</div>
 
   <footer>
+    <div class="brand"><div class="mark"><span>灵</span></div><div class="bn">万物智灵</div></div>
     <div class="c">合作洽谈：<b>姜昊</b>（万物智灵 创始人 / CEO · 清华大学 AI 方向硕士）<br>微信 <b>Ginger-Hao</b> ｜ 电话 <b>182 4518 2507</b></div>
     <div class="tiny">© 2026 万物智灵（深圳）科技有限公司 · wwling.cn</div>
   </footer>
