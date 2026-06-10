@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>报哥志愿 · AI 高考志愿填报系统 — 万物智灵</title>
+<meta name="description" content="清华团队打造的 AI 高考志愿填报系统：智能测评 + 冲稳保方案 + 专业去向透明 + AI 问答。真实数据驱动，防幻觉 RAG 架构。">
+<style>
+  :root{--ink:#0e1830;--navy:#13203a;--purple:#6b2d8f;--gold:#c9a35f;--gold-l:#e6cfa3;--txt:#e9ecf6;--mut:#9aa6c0;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:
+    radial-gradient(120% 70% at 80% -10%,#3b2354 0%,#1b1430 40%,#0e1830 100%) fixed;color:var(--txt);}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px;}
+  header{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logo{display:flex;align-items:center;gap:10px;}
+  .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--gold),#8a4bbb);
+    display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:17px;}
+  .lt{font-weight:800;letter-spacing:.12em;font-size:15px;}
+  .lt small{display:block;color:var(--mut);font-weight:400;font-size:10px;letter-spacing:.2em;}
+  .pill{font-size:12px;color:var(--gold-l);border:1px solid #c9a35f66;padding:4px 12px;border-radius:99px;}
+
+  .hero{text-align:center;padding:34px 0 10px;}
+  .hero .tag{display:inline-block;font-size:12px;letter-spacing:.3em;color:var(--gold-l);border:1px solid #c9a35f55;
+    padding:5px 14px;border-radius:99px;margin-bottom:16px;}
+  h1{font-size:clamp(26px,6vw,40px);font-weight:900;line-height:1.3;}
+  h1 .em{background:linear-gradient(90deg,var(--gold),#b87ae0);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub{color:var(--mut);margin-top:12px;font-size:14.5px;line-height:1.8;}
+  .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+  .badge{font-size:12px;background:#ffffff10;border:1px solid #ffffff22;padding:5px 12px;border-radius:8px;}
+  .badge b{color:var(--gold-l);}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:30px 0 8px;}
+  .stat{background:#ffffff0c;border:1px solid #ffffff1c;border-radius:12px;padding:14px 8px;text-align:center;}
+  .stat .n{font-size:clamp(17px,3.4vw,24px);font-weight:900;color:var(--gold-l);}
+  .stat .t{font-size:11px;color:var(--mut);margin-top:4px;}
+  @media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr);}}
+
+  .sec{margin:34px 0 14px;font-size:13px;letter-spacing:.3em;color:var(--gold-l);font-weight:700;}
+  .screens{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+  @media(max-width:860px){.screens{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;}
+    .scr{min-width:62vw;scroll-snap-align:center;}}
+  .scr{background:#ffffff0a;border:1px solid #ffffff1e;border-radius:14px;padding:10px;}
+  .scr img{width:100%;border-radius:9px;display:block;}
+  .scr h5{font-size:13.5px;font-weight:800;margin:9px 2px 3px;}
+  .scr h5 i{font-style:normal;color:var(--gold);margin-right:5px;}
+  .scr p{font-size:11.5px;color:var(--mut);line-height:1.6;padding:0 2px 2px;}
+
+  .flow{background:#ffffff0a;border:1px solid #ffffff1e;border-radius:14px;padding:16px;
+    display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font-size:13px;}
+  .flow b{color:var(--gold-l);font-weight:700;}
+  .flow .ar{color:#67729a;}
+
+  .coop{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:680px){.coop{grid-template-columns:1fr;}}
+  .cp{background:linear-gradient(160deg,#ffffff10,#ffffff05);border:1px solid #ffffff1e;border-radius:14px;padding:16px;}
+  .cp h5{font-size:14.5px;font-weight:800;color:var(--gold-l);margin-bottom:6px;}
+  .cp p{font-size:12.5px;color:var(--mut);line-height:1.75;}
+
+  .note{font-size:11.5px;color:#7d89aa;line-height:1.7;margin-top:18px;text-align:center;}
+  footer{margin-top:30px;border-top:1px solid #ffffff1a;padding:22px 0 34px;text-align:center;}
+  footer .c{font-size:14px;line-height:2;color:var(--txt);}
+  footer .c b{color:var(--gold-l);}
+  footer .tiny{font-size:11px;color:#67729a;margin-top:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">
+      <div class="mark">灵</div>
+      <div class="lt">万物智灵<small>WANWU ZHILING · AI</small></div>
+    </div>
+    <div class="pill">产品演示 DEMO</div>
+  </header>
+
+  <div class="hero">
+    <div class="tag">报哥志愿 · AI 高考报考系统</div>
+    <h1>先懂你的人，<span class="em">再懂你的分</span></h1>
+    <div class="sub">清华团队打造的 AI 志愿填报产品：性格测评 → 冲稳保方案 → 专业去向透明 → AI 问答<br>每一个关键数字都标注来源，不贩卖焦虑、不编造数据。</div>
+    <div class="badges">
+      <div class="badge"><b>清华团队</b> 研发与顾问交付</div>
+      <div class="badge"><b>真实数据</b> 驱动，强制来源标注</div>
+      <div class="badge"><b>防幻觉 RAG</b> 架构 AI 问答</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">13,036</div><div class="t">院校投档线数据</div></div>
+    <div class="stat"><div class="n">1,083</div><div class="t">一分一段位次表</div></div>
+    <div class="stat"><div class="n">99</div><div class="t">专业画像（薪资/岗位/去向）</div></div>
+    <div class="stat"><div class="n">60+</div><div class="t">2025 季 1对1 实战交付</div></div>
+  </div>
+
+  <div class="sec">五屏看懂产品</div>
+  <div class="screens">
+    <div class="scr"><img src="img/home.png" alt="首页"><h5><i>01</i>首页</h5><p>测评 + 查分双入口，「专业去向透明」建立家长信任</p></div>
+    <div class="scr"><img src="img/assess.png" alt="智能测评"><h5><i>02</i>智能测评</h5><p>MBTI + 霍兰德双模型，7 分钟生成人格 × 职业画像</p></div>
+    <div class="scr"><img src="img/major.png" alt="专业详情"><h5><i>03</i>专业透明</h5><p>应届薪资区间、典型岗位、深造去向，全部标注来源年份</p></div>
+    <div class="scr"><img src="img/match.png" alt="冲稳保"><h5><i>04</i>冲稳保方案</h5><p>一分一段实时算位次，冲 / 稳 / 保梯度一目了然</p></div>
+    <div class="scr"><img src="img/chat.png" alt="AI问报哥"><h5><i>05</i>问报哥 AI</h5><p>大模型 + RAG 事实注入：有数据才回答，没数据明说「需查证」</p></div>
+  </div>
+
+  <div class="sec">用户旅程</div>
+  <div class="flow">
+    <b>智能测评</b><span class="ar">→</span><b>人格画像</b><span class="ar">→</span><b>查分定位</b><span class="ar">→</span><b>冲稳保方案</b><span class="ar">→</span><b>AI 答疑</b><span class="ar">→</span><b>1对1 深度填报服务</b>
+  </div>
+
+  <div class="sec">学校 / 机构合作</div>
+  <div class="coop">
+    <div class="cp"><h5>联合品牌</h5><p>可贴牌部署为学校 / 机构专属版本，沉淀自有家长私域与口碑资产。</p></div>
+    <div class="cp"><h5>渠道 × 交付</h5><p>合作方提供学生与家长渠道，我们提供产品 + 清华背景顾问团队交付，按人头分成。</p></div>
+    <div class="cp"><h5>季节性现金流</h5><p>单客客单价 3000 元+，单季交付周期 2 周；去向数据沉淀反哺下一届招生。</p></div>
+  </div>
+
+  <div class="note">演示版说明：界面为开发完成的小程序实景截图，正式版上线流程推进中；当前数据底座覆盖贵州 / 黑龙江，其他省份约 2 周完成适配。本产品不作任何录取承诺。</div>
+
+  <footer>
+    <div class="c">合作洽谈：<b>姜昊</b>（万物智灵 创始人 / CEO · 清华大学 AI 方向硕士）<br>微信 <b>Ginger-Hao</b> ｜ 电话 <b>182 4518 2507</b></div>
+    <div class="tiny">© 2026 万物智灵（深圳）科技有限公司 · wwling.cn</div>
+  </footer>
+</div>
+</body>
+</html>
