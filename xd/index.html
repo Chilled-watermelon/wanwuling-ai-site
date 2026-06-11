@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>万物智灵 × XD Connects · 礼品 AI 升级合作</title>
+<style>
+  :root{
+    --paper:#f7f4ed; --ink:#13182a; --navy:#0e1626;
+    --gold:#b08d57; --gold-l:#d8bb8a; --gold-pale:#e9dcc3;
+    --mut:#6b7280; --hair:#d8d2c4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"PingFang SC","Hiragino Sans GB",sans-serif;color:var(--ink);background:var(--paper);font-weight:300;line-height:1.8;}
+  .serif{font-family:"Songti SC","STSongti-SC","SimSun",serif;}
+  .kick{font-size:11px;letter-spacing:.45em;color:var(--gold);font-weight:600;text-transform:uppercase;}
+  .wrap{max-width:680px;margin:0 auto;padding:0 22px;}
+
+  /* hero */
+  .hero{background:linear-gradient(168deg,#101a2e 0%,#0e1626 55%,#0c1320 100%);color:#eee9dd;padding:44px 0 0;}
+  .hero .logo{height:30px;display:block;margin-bottom:40px;}
+  .hero h1{font-family:"Songti SC",serif;font-weight:900;font-size:34px;line-height:1.5;letter-spacing:.04em;margin:18px 0 14px;}
+  .hero h1 .g{color:var(--gold-l);}
+  .hero .sub{font-size:13px;letter-spacing:.22em;color:#aab4c9;}
+  .hero .lines{margin-top:18px;font-size:12px;color:#8d99b5;letter-spacing:.1em;line-height:2.2;}
+  .hero .lines i{font-style:normal;color:var(--gold);font-family:Georgia,serif;margin-right:6px;}
+  .hero-img{margin-top:34px;position:relative;height:300px;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
+  .hero-img::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0e1626 0%,transparent 35%);}
+
+  section{padding:52px 0 10px;}
+  h2{font-family:"Songti SC",serif;font-weight:900;font-size:24px;letter-spacing:.06em;margin:10px 0 8px;}
+  .lede{font-size:14px;color:#4d5566;}
+  .rule{width:100%;height:1px;background:linear-gradient(90deg,var(--gold) 0 70px,var(--hair) 70px 100%);margin:20px 0;}
+
+  /* videos */
+  .dark-sec{background:linear-gradient(168deg,#101a2e 0%,#0c1320 100%);color:#eee9dd;padding:52px 0 40px;margin-top:40px;}
+  .dark-sec h2{color:#f3eee1;}
+  .dark-sec .lede{color:#c3bdae;}
+  video{width:100%;display:block;border-radius:10px;border:1px solid #2c3a58;box-shadow:0 10px 30px #00000066;background:#000;}
+  .vcap{font-size:12px;letter-spacing:.14em;color:#a8b2c9;text-align:center;margin:10px 0 26px;}
+  .vcap b{color:var(--gold-l);font-family:Georgia,serif;font-weight:400;margin-right:6px;}
+
+  /* plan cards */
+  .card{background:#fff;border:1px solid #e7e1d2;border-top:3px solid var(--gold);padding:22px 20px;margin-bottom:16px;box-shadow:0 6px 18px #00000010;}
+  .card .no{font-family:Georgia,serif;font-size:15px;color:var(--gold);}
+  .card h3{font-family:"Songti SC",serif;font-weight:900;font-size:17px;margin:6px 0 6px;letter-spacing:.05em;}
+  .card p{font-size:13.5px;color:#4d5566;}
+  .card p b{font-weight:600;color:var(--ink);}
+
+  /* figures */
+  .figs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:18px;}
+  .fig{background:var(--paper);padding:18px 16px;}
+  .fig .n{font-family:Georgia,serif;font-size:26px;}
+  .fig .n small{font-size:13px;color:var(--gold);font-family:"Songti SC",serif;font-weight:900;margin-left:2px;}
+  .fig .t{font-size:11px;color:var(--mut);letter-spacing:.1em;margin-top:2px;}
+
+  .creds{margin-top:14px;}
+  .cred{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--hair);font-size:13px;align-items:baseline;}
+  .cred .no{font-family:Georgia,serif;font-size:12px;color:var(--gold);flex:0 0 22px;}
+  .cred b{font-weight:600;}
+
+  .tech{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+  .tch{background:var(--navy);color:#ece6d8;padding:16px 14px;position:relative;}
+  .tch::before{content:"";position:absolute;top:0;left:0;width:26px;height:2px;background:var(--gold);}
+  .tch .n{font-family:Georgia,serif;font-size:19px;color:var(--gold-l);}
+  .tch .t{font-size:11px;color:#b9c0cf;margin-top:4px;line-height:1.7;}
+
+  /* contact */
+  .contact{background:var(--navy);color:#ece6d8;padding:30px 24px;margin:46px 0 0;}
+  .contact .nm{font-family:"Songti SC",serif;font-weight:900;font-size:20px;letter-spacing:.12em;}
+  .contact .ti{font-size:12px;color:#aab4c9;margin:6px 0 16px;line-height:1.9;}
+  .contact .way{font-size:14px;line-height:2.3;}
+  .contact .way b{color:var(--gold-l);font-family:Georgia,serif;font-weight:400;font-size:11px;letter-spacing:.2em;margin-right:10px;}
+  footer{padding:26px 0 40px;font-size:10px;color:#9a937f;letter-spacing:.16em;text-align:center;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <img class="logo" src="logo_light.png" alt="万物智灵">
+    <div class="kick">Wanwu Zhiling × XD Connects</div>
+    <h1>让每一份礼物，<br>都<span class="g">会说话</span>。</h1>
+    <div class="sub">Changing the way we give — with AI.</div>
+    <div class="lines">
+      <i>01</i> 礼品品类 AI 升级共创<br>
+      <i>02</i> AI 软件与数字化服务<br>
+      <i>03</i> 端侧 AI 软硬一体 · 已量产验证
+    </div>
+  </div>
+  <div class="hero-img"><img src="ai_dog.jpg" alt="AI 仿真宠物犬"></div>
+</div>
+
+<div class="dark-sec" style="margin-top:0;">
+  <div class="wrap">
+    <div class="kick">Live Demo · 产品实拍</div>
+    <h2>先看看我们做出来的东西</h2>
+    <p class="lede" style="margin-bottom:24px;">AI 仿真宠物犬——真实触感毛发、自主行走、语音对话、情绪交互。<b style="color:var(--gold-l);">已量产交付 5000+ 台</b>，央视到现场实拍报道。</p>
+    <video src="v/dog_walk.mp4" controls playsinline preload="metadata" poster="ai_dog.jpg"></video>
+    <div class="vcap"><b>01</b>自主行走 · 步态模拟（实拍无剪辑）</div>
+    <video src="v/dog_pet.mp4" controls playsinline preload="metadata"></video>
+    <div class="vcap"><b>02</b>抚摸互动 · 情绪反馈</div>
+    <video src="v/plush_ai.mp4" controls playsinline preload="metadata"></video>
+    <div class="vcap"><b>03</b>普通毛绒玩具的 AI 化改装 · 一块模组让礼物开口说话</div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="kick">Cooperation · 三个合作方向</div>
+    <h2>我们能为 XD 做什么</h2>
+    <div class="rule"></div>
+    <div class="card">
+      <div class="no">Plan 01 · 主推</div>
+      <h3>礼品品类 AI 升级共创</h3>
+      <p>把 AI 装进 XD 已经卖得动的品类——音频、旅行、桌面办公、毛绒与节庆礼品。<b>AI 语音速记卡片、多语翻译挂件、会说话的吉祥物、桌面 AI 陪伴件</b>……XD 定义品类与设计语言，我们交付从 AI 方案、工程样机到深圳量产的整条链路。从 1 个 SKU 开始：选品共创 4–6 周出可演示手板 → 小批量试销 → 品类线共建。<b>端侧优先：无订阅、低功耗、数据不出设备</b>，天然适配 GDPR / EU AI Act 与礼品开箱即用的属性。</p>
+    </div>
+    <div class="card">
+      <div class="no">Plan 02 · 软件与数字化</div>
+      <h3>上海团队的 AI 工作台</h3>
+      <p>设计与商贸团队的 AI 提效，按模块部署：<b>AIGC 设计工作流</b>（概念草图 / 渲染 / 配色，设计师产能放大）、<b>多语言产品内容自动生成</b>（目录 / 电商 / 提案一键 EN/DE/FR/ES/NL）、<b>B2B 销售 AI 助理</b>（客户分层、跟进提醒、报价话术）。清华 AI 团队直接交付，先试一个团队、一个模块，跑通再扩。</p>
+    </div>
+    <div class="card">
+      <div class="no">Plan 03 · 长期增量</div>
+      <h3>双向供应链协同</h3>
+      <p>XD 三十余年的<b>欧洲品质与可持续体系</b>（AWARE™ / rPET）× 我们的<b>深圳 AI 硬件供应链</b>：向外，AI 产品可借 XD 渠道触达欧洲 B 端；向内，XD 优质品类可对接我们的国内 B 端客户（企业采购 / 文创 / 教育）。做双向的生意，而不是单向的买卖。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick">About Us · 万物智灵</div>
+    <h2>清华 × 港科大的端侧 AI 团队</h2>
+    <p class="lede">万物智灵（深圳）科技有限公司——端侧 AI 语音交互全栈技术 + 具身智能产品，面向情感陪伴、文博文旅、健康养老场景，软硬一体交付。</p>
+    <div class="figs">
+      <div class="fig"><div class="n">200<small>万+</small></div><div class="t">累计交付流水</div></div>
+      <div class="fig"><div class="n">159.5<small>万</small></div><div class="t">已签收入合同·在手</div></div>
+      <div class="fig"><div class="n">5000<small>+</small></div><div class="t">单品方案交付量</div></div>
+      <div class="fig"><div class="n">2500<small>万</small></div><div class="t">机构投后估值·TS 签章</div></div>
+    </div>
+    <div class="tech">
+      <div class="tch"><div class="n">&lt;400ms</div><div class="t">端侧语音生成延迟 · 离线可用</div></div>
+      <div class="tch"><div class="n">90 天</div><div class="t">硬件感知蒸馏 · 快速场景迁移</div></div>
+      <div class="tch"><div class="n">3 架构</div><div class="t">X86 / ARM / RISC-V 跨平台部署</div></div>
+      <div class="tch"><div class="n">20 篇</div><div class="t">CVPR·ACM MM 等顶会论文储备</div></div>
+    </div>
+    <div class="creds">
+      <div class="cred"><span class="no">01</span><span><b>WAIC 世界人工智能大会</b> · BPAA 算法实践典范 TOP50（2025）</span></div>
+      <div class="cred"><span class="no">02</span><span><b>国家网信办算法备案授权</b> · 生成式 AI 合规资质（2025.08）</span></div>
+      <div class="cred"><span class="no">03</span><span><b>中国—东盟 AI 大赛总决赛一等奖</b> · 市长颁奖 · 奖金 20 万</span></div>
+      <div class="cred"><span class="no">04</span><span><b>单笔 85 万元采购合同</b> · AI 陪伴硬件 · 双方盖章</span></div>
+      <div class="cred"><span class="no">05</span><span><b>字节跳动 / 火山引擎</b> 技术合作 · 新华网 / 人民日报报道</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="contact">
+    <div class="nm">姜 昊</div>
+    <div class="ti">万物智灵（深圳）科技有限公司 · 创始人 / CEO<br>清华大学国家卓越工程师学院 AI 工程硕博专项</div>
+    <div class="way"><b>Tel / WeChat</b>182 4518 2507</div>
+    <div class="way"><b>Mail</b>h-jiang24@mails.tsinghua.edu.cn</div>
+    <div class="way"><b>Web</b>wwling.cn</div>
+  </div>
+  <footer>WANWU ZHILING × XD CONNECTS · 2026 JUNE · 商务合作材料</footer>
+</div>
+
+</body>
+</html>
