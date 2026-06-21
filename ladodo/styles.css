@@ -234,6 +234,52 @@ h1 {
   font-weight: 900;
 }
 
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  color: #fff;
+  background: #07090d;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trust-strip div {
+  min-height: 230px;
+  padding: clamp(24px, 3vw, 42px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent),
+    #07090d;
+}
+
+.trust-strip div:last-child {
+  border-right: 0;
+}
+
+.trust-strip span,
+.delivery-grid span {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--cyan);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.trust-strip strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: clamp(21px, 2.1vw, 30px);
+  line-height: 1.12;
+}
+
+.trust-strip p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 14px;
+}
+
 .feature-run {
   background: var(--night);
 }
@@ -306,6 +352,48 @@ h1 {
 .proof-section,
 .cooperate {
   padding: clamp(72px, 10vw, 136px) clamp(24px, 7vw, 96px);
+}
+
+.delivery-section {
+  padding: clamp(72px, 10vw, 136px) clamp(24px, 7vw, 96px);
+  color: #fff;
+  background:
+    linear-gradient(135deg, rgba(46, 200, 223, 0.14), transparent 42%),
+    linear-gradient(180deg, #11151c, #07090d 68%);
+}
+
+.delivery-section .section-head h2 {
+  max-width: 1080px;
+  font-size: clamp(34px, 5vw, 76px);
+}
+
+.delivery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.delivery-grid article {
+  min-height: 340px;
+  padding: clamp(28px, 4vw, 52px);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    #11151c;
+}
+
+.delivery-grid h3 {
+  margin: 0 0 16px;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: clamp(30px, 4vw, 58px);
+  line-height: 1.04;
+}
+
+.delivery-grid p {
+  max-width: 480px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 16px;
 }
 
 .section-head {
@@ -405,7 +493,7 @@ h1 {
 
 .playlist {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 14px;
   margin-top: 26px;
 }
@@ -493,7 +581,9 @@ figcaption {
 
 .cred-section {
   padding: clamp(72px, 10vw, 136px) clamp(24px, 7vw, 96px);
-  background: #101214;
+  background:
+    radial-gradient(circle at 72% 8%, rgba(186, 138, 66, 0.18), transparent 34%),
+    #101214;
 }
 
 .cred-layout {
@@ -629,6 +719,8 @@ figcaption {
   }
 
   .fit-grid,
+  .trust-strip,
+  .delivery-grid,
   .playlist,
   .steps,
   .cred-images {
@@ -690,6 +782,8 @@ figcaption {
   }
 
   .fit-grid,
+  .trust-strip,
+  .delivery-grid,
   .playlist,
   .steps,
   .cred-images {
@@ -697,6 +791,7 @@ figcaption {
   }
 
   .fit-grid div,
+  .trust-strip div,
   .steps li {
     min-height: auto;
     border-right: 0;
