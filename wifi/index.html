@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>万物灵 Wi‑Fi 配网</title>
+  <style>
+    :root { color-scheme: light; font-family: "Avenir Next", "PingFang SC", -apple-system, BlinkMacSystemFont, sans-serif; --ink:#20242d; --muted:#737782; --paper:#f7f3ec; --card:#fffdf9; --line:#e8e0d5; --coral:#f16f55; --coral-dark:#d85b44; --mint:#3d927f; --sun:#f4bd62; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 12% 0%,#ffe9c5 0,transparent 35%),radial-gradient(circle at 100% 12%,#d8eee5 0,transparent 30%),var(--paper); }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.16; background-image:linear-gradient(115deg,transparent 0 47%,rgba(32,36,45,.12) 47.2% 47.5%,transparent 47.7%); background-size:28px 28px; }
+    main { position:relative; max-width:620px; margin:0 auto; padding:28px 18px 54px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .mark { display:grid; place-items:center; width:46px; height:46px; border-radius:16px 16px 16px 5px; background:var(--ink); color:#ffe1b6; font-size:16px; font-weight:800; letter-spacing:-1px; box-shadow:5px 5px 0 var(--sun); }
+    .eyebrow,.card-kicker { color:var(--coral-dark); font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { margin:14px 0 8px; font-size:clamp(32px,8vw,54px); line-height:1.04; letter-spacing:-.06em; }
+    .lead { max-width:520px; margin:0; color:var(--muted); font-size:16px; line-height:1.65; }
+    .guide { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:25px 0 14px; }
+    .guide-step { padding:11px 12px; border:1px solid rgba(32,36,45,.08); border-radius:14px; background:rgba(255,253,249,.65); color:#a09a90; }
+    .guide-step.active { color:var(--ink); border-color:#f1c8a0; background:#fff7ea; }
+    .guide-step span { display:block; font-size:10px; font-weight:800; letter-spacing:.12em; color:var(--coral); }
+    .guide-step b { display:block; margin-top:4px; font-size:13px; }
+    .card { margin-top:14px; padding:22px; border:1px solid rgba(32,36,45,.08); border-radius:26px; background:rgba(255,253,249,.92); box-shadow:0 18px 50px rgba(72,59,42,.08); }
+    .card-kicker { margin-bottom:14px; }
+    label { display:block; margin:15px 0 7px; font-size:13px; font-weight:800; }
+    input { width:100%; border:1px solid #d9d1c7; border-radius:14px; padding:14px 15px; outline:none; background:#fff; color:var(--ink); font:inherit; font-size:17px; transition:border .2s,box-shadow .2s; }
+    input:focus { border-color:var(--coral); box-shadow:0 0 0 4px rgba(241,111,85,.14); }
+    .password-wrap { position:relative; }
+    .password-wrap input { padding-right:70px; }
+    .password-toggle { position:absolute; top:50%; right:10px; transform:translateY(-50%); padding:7px 8px; border-radius:9px; background:#f3eee6; color:#6d665c; font-size:12px; }
+    button { border:0; border-radius:14px; padding:14px 16px; font:inherit; font-size:14px; font-weight:800; cursor:pointer; transition:transform .18s,box-shadow .18s,opacity .18s; }
+    button:not(:disabled):active { transform:translateY(1px); }
+    button:disabled { opacity:.42; cursor:not-allowed; }
+    .actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:18px; }
+    .primary { color:#fff; background:var(--coral); box-shadow:0 9px 18px rgba(241,111,85,.2); }
+    .primary:not(:disabled):hover { box-shadow:0 12px 22px rgba(241,111,85,.28); }
+    .secondary { color:#276b61; background:#e1f0e9; }
+    .danger { margin-top:10px; color:#a34c42; background:#fae7e1; }
+    .trust-note { display:flex; gap:8px; margin-top:14px; color:#7b827b; font-size:12px; line-height:1.5; }
+    .trust-note span { color:var(--mint); }
+    .status-panel { display:flex; align-items:center; gap:12px; padding:14px; border-radius:17px; background:#f7f0e7; }
+    .dot { flex:none; width:12px; height:12px; border-radius:50%; background:#a7a29b; box-shadow:0 0 0 5px rgba(167,162,155,.14); }
+    .dot.ok { background:var(--mint); box-shadow:0 0 0 5px rgba(61,146,127,.14); } .dot.warn { background:var(--sun); box-shadow:0 0 0 5px rgba(244,189,98,.18); } .dot.err { background:#d9574d; box-shadow:0 0 0 5px rgba(217,87,77,.14); }
+    #statusText { display:block; font-weight:800; }
+    .small { display:block; margin-top:3px; color:var(--muted); font-size:12px; word-break:break-all; }
+    details { margin-top:14px; }
+    summary { cursor:pointer; color:#81796f; font-size:12px; font-weight:700; }
+    .check { display:flex; align-items:center; gap:8px; margin-top:10px; color:#6d6a63; font-size:12px; font-weight:600; }
+    .check input { width:auto; accent-color:var(--coral); }
+    .footer-note { margin:18px 3px 0; color:#817b72; font-size:12px; line-height:1.6; }
+    .diagnostics { margin-top:24px; }
+    .log-head { display:flex; align-items:center; justify-content:space-between; margin:12px 0 8px; }
+    .log-head strong { font-size:13px; }
+    .clear { padding:7px 10px; border-radius:9px; background:#eee8df; color:#686159; font-size:11px; }
+    pre { max-height:230px; margin:0; overflow:auto; white-space:pre-wrap; word-break:break-word; border-radius:14px; padding:13px; background:#20242d; color:#d8f3e8; font:11px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    @media (max-width:460px) { main { padding:22px 14px 40px; } .card { padding:18px; border-radius:22px; } .actions { grid-template-columns:1fr; } .guide-step { padding:10px 9px; } .guide-step b { font-size:12px; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="brand"><div class="mark">WL</div><div><div class="eyebrow">万物灵 · 智能陪伴</div><div style="color:var(--muted);font-size:12px;margin-top:3px">给狗狗接入家里的 Wi‑Fi</div></div></div>
+  <h1>让狗狗连上 Wi‑Fi</h1>
+  <p class="lead">把狗放在身边，输入家里的 Wi‑Fi 信息，再按一下连接。整个配网过程在你的手机和狗之间完成。</p>
+
+  <div class="guide"><div class="guide-step active"><span>01</span><b>输入 Wi‑Fi</b></div><div class="guide-step"><span>02</span><b>连接狗狗</b></div><div class="guide-step"><span>03</span><b>完成配网</b></div></div>
+
+  <section class="card">
+    <div class="card-kicker">Step 1 / 家庭网络</div>
+    <label for="ssid">Wi‑Fi 名称</label>
+    <input id="ssid" autocomplete="off" placeholder="输入家里的 Wi‑Fi 名称">
+    <label for="password">Wi‑Fi 密码</label>
+    <div class="password-wrap"><input id="password" type="password" autocomplete="off" placeholder="输入 Wi‑Fi 密码"><button id="passwordToggle" class="password-toggle" type="button">显示</button></div>
+    <div class="trust-note"><span>●</span><div>密码只通过蓝牙发给狗，不会上传到网页服务器。</div></div>
+  </section>
+
+  <section class="card">
+    <div class="card-kicker">Step 2 / 设备连接</div>
+    <div class="status-panel"><span id="statusDot" class="dot"></span><div><span id="statusText">准备连接</span><span id="deviceText" class="small">尚未选择设备</span></div></div>
+    <div class="actions"><button id="connectBtn" class="primary">搜索我的狗</button><button id="sendBtn" class="secondary" disabled>发送 Wi‑Fi 配置</button></div>
+    <button id="disconnectBtn" class="danger" disabled>断开设备</button>
+    <details><summary>高级选项</summary><label class="check"><input id="nameFilter" type="checkbox" checked> 只搜索 JL 开头的设备</label></details>
+  </section>
+
+  <p class="footer-note">安卓请使用 Chrome 浏览器；iPhone 需要打开配套 App。狗需要在你身边并处于配网模式。</p>
+
+  <details class="diagnostics"><summary>查看连接日志（排查问题时使用）</summary><div class="log-head"><strong>运行日志</strong><button id="clearBtn" class="clear" type="button">清空</button></div><pre id="log"></pre></details>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
