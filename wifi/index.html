@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <script>
+    // GitHub Pages is still provisioning the custom-domain certificate. If a
+    // user follows the temporary HTTP form of the short link, move to the
+    // secure canonical page before any Bluetooth code can run.
+    if (location.protocol === 'http:' && location.hostname === 'wwling.cn') {
+      location.replace('https://chilled-watermelon.github.io/wanwuling-wifi-config/' + location.search + location.hash);
+    }
+  </script>
   <title>万物灵 Wi‑Fi 配网</title>
   <style>
     :root { color-scheme: light; font-family: "Avenir Next", "PingFang SC", -apple-system, BlinkMacSystemFont, sans-serif; --ink:#20242d; --muted:#737782; --paper:#f7f3ec; --card:#fffdf9; --line:#e8e0d5; --coral:#f16f55; --coral-dark:#d85b44; --mint:#3d927f; --sun:#f4bd62; }
